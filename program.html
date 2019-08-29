@@ -1,0 +1,56 @@
+
+<html>
+<script>
+var array = [1,3,4,5,7,9];
+
+	function myFunction (){
+	    var value = document.getElementById("input").value ;
+		s(value.split("-")[0],value.split("-")[1])
+	}
+	function s (left ,right){
+	left = parseInt(left);
+	right = parseInt(right);
+	var errorMessage = "";
+	var finalList = "";
+	var duplicates = [];
+		if(right){
+			for(i = left; i <=right ; i++){
+				if(array.indexOf(i) == -1){
+					array.push(i);
+				}
+				else{
+					duplicates.push(i);
+				}
+			}}
+			else{
+				if(array.indexOf(parseInt(left)) == -1){
+					array.push(left);
+				}
+				else{
+					duplicates.push(left);
+				}
+			}
+			
+		
+		 if(duplicates.length > 0){
+			 errorMessage = "Duplicated found : " ;
+			 errorMessage += duplicates.join(",");
+		 }
+		  if(array.length > 0){
+			 finalList = "Final list : " ;
+			 finalList += array.sort(function(a, b){return a-b}).join(",");
+		 }
+		 document.getElementById("error").innerHTML = errorMessage;
+		 document.getElementById("final").innerHTML = finalList;
+		}
+		
+	
+</script>
+<body>
+
+Enter Value: <input type="text" name="fname" id="input"><br>
+<button  onclick="myFunction()">Calculate</button><br>
+<div id="error"></div><br>
+<div id ="final"></div>
+</body>
+</html>
